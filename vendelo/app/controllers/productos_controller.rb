@@ -7,7 +7,11 @@
   end
 
   def show
-   @productos= Producto.find(params[:id]) # muestra un producto por id
+   @producto= Producto.find(params[:id]) # muestra un producto por id
+  end
+
+  def nuevo
+    @producto= Producto.new # crea una instancia del objeto Producto
   end
 
  end

@@ -1,0 +1,23 @@
+
+<h2>Añadir Producto</h2>
+
+<% # esto es un formulario%>
+<%= form_with model: @producto do |form| %> 
+
+<div>
+<%= form.label :Titulo %>
+<%= form.text_field :titulo %>
+</div>
+
+<div>
+<%= form.label :Descripcion %>
+<%= form.text_area :descripcion %>
+</div>
+
+<div>
+<%= form.label :Precio %>
+<%= form.text_field :precio %>
+</div>
+
+<%= form.submit %>
+<% end %>

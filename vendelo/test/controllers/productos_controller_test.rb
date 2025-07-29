@@ -17,6 +17,13 @@ class ProoductosControllerTest < ActionDispatch::IntegrationTest
     assert_select '.descripcion', 'ps3 en buen estado'
     assert_select '.precio', '150'
 
+  end
+
+  test 'renderiza la pagina de nuevo con su formulario' do
+
+    get nuevo_producto_path
+    assert_response :success
+    assert_select 'form'
 
   end
 
