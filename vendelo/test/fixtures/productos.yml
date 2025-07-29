@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+ps4:
+  titulo: ps4 fat
+  descripcion: ps3 en buen estado
+  precio: 150
+
+switch:
+  titulo: nintendo switch
+  descripcion: le falla el lector de tarjeta sd
+  precio: 195

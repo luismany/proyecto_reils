@@ -1,0 +1,11 @@
+<h2>Productos</h2>
+
+<% @productos.each do |producto|%> <%# bucle each %>
+
+<%= link_to producto_path(producto), class:'producto' do %> <%# para crear un link %>
+
+  <h2><%= producto.titulo%></h2>  
+
+<%end%>
+
+<%end%>
