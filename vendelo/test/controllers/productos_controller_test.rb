@@ -27,5 +27,18 @@ class ProoductosControllerTest < ActionDispatch::IntegrationTest
 
   end
 
+  test 'Permite crear un nuevo Producto' do
+
+    post productos_path, params: {
+      producto:{
+        titulo:'nintendo 64',
+        descripcion:'le faltan los cables',
+        precio:45
+      }
+    }
+
+    assert_redirected_to productos_path
+  end
+
 end
 
