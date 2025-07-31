@@ -29,6 +29,7 @@ class ProoductosControllerTest < ActionDispatch::IntegrationTest
 
   test 'Permite crear un nuevo Producto' do
 
+    # espera un objeto producto con todos sus atributos
     post productos_path, params: {
       producto:{
         titulo:'nintendo 64',
@@ -38,6 +39,20 @@ class ProoductosControllerTest < ActionDispatch::IntegrationTest
     }
 
     assert_redirected_to productos_path
+  end
+
+  test 'no permite crear un nuevo producto con campos vacios' do  
+
+    post productos_path, params: {
+      producto:{
+        titulo:'',
+        descripcion:'le faltan los cables',
+        precio:45
+      }
+    }
+
+    assert_response :unprocessable_entity # espera que la respuesta sea un error 422
+
   end
 
 end

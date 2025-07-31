@@ -4,6 +4,13 @@
 <% # esto es un formulario%>
 <%= form_with model: @producto do |form| %> 
 
+<% # este bloque recorre @producto y muestra el mensaje de error %>
+<% @producto.errors.full_messages.each do |error|%>
+   <div>
+        <%= error %> 
+   </div>  
+<% end %>
+
 <div>
 <%= form.label :Titulo %>
 <%= form.text_field :titulo %>

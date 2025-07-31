@@ -20,10 +20,10 @@
    # pp @producto # muestra por pantalla el contenido de una variable
 
    if @producto.save
-      redirect_to productos_path
+      redirect_to productos_path # redirige a productos_path
 
    else
-     render :nuevo_producto
+     render :nuevo, status: :unprocessable_entity # renderiza nuevo y envia un error 422
    end
 
   end
