@@ -39,6 +39,8 @@ class ProoductosControllerTest < ActionDispatch::IntegrationTest
     }
 
     assert_redirected_to productos_path
+    # espera que el mensaje del alert sea igual a este.
+    assert_equal flash[:notice], 'Producto creado correctamente.' 
   end
 
   test 'no permite crear un nuevo producto con campos vacios' do  
@@ -52,6 +54,14 @@ class ProoductosControllerTest < ActionDispatch::IntegrationTest
     }
 
     assert_response :unprocessable_entity # espera que la respuesta sea un error 422
+
+  end
+
+   test 'renderiza la pagina de editar con su formulario' do
+
+    get editar_producto_path(productos(:ps4))
+    assert_response :success
+    assert_select 'form'
 
   end
 

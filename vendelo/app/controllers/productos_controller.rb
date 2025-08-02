@@ -20,19 +20,24 @@
    # pp @producto # muestra por pantalla el contenido de una variable
 
    if @producto.save
-      redirect_to productos_path # redirige a productos_path
+    # redirige a productos_path
+      redirect_to productos_path , notice: 'Producto creado correctamente.'
 
    else
      render :nuevo, status: :unprocessable_entity # renderiza nuevo y envia un error 422
    end
 
   end
+  
+  def editar
+    @producto = Producto.find(params[:id])
+  end
+
 
   private
   # esta funcion devuelve los parametros de producto
- def parametros_producto
+  def parametros_producto
     params.require(:producto).permit(:titulo, :descripcion, :precio) 
   end
-
 
  end

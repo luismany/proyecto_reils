@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get '/productos/nuevo', to: 'productos#nuevo', as: :nuevo_producto
   get '/productos', to: 'productos#index'
   get '/productos/:id', to: 'productos#show', as: :producto
+    get '/productos/:id/editar', to: 'productos#editar', as: :editar_producto
   
 
   # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
