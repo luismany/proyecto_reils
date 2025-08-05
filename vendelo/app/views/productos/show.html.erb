@@ -2,3 +2,11 @@
  <h2 class= 'titulo'><%= @producto.titulo%></h2>  
  <p class= 'descripcion'><%= @producto.descripcion%></p>
 <span class= 'precio'><%= @producto.precio%></span> $
+
+<%# link que redirige a editar producto%>
+<%= link_to 'Editar Producto', editar_producto_path(@producto) %>
+
+<%= link_to 'Eliminar Producto', producto_path(@producto), data:{
+    turbo_method: :delete,
+    turbo_confirm: '¿ Estas Seguro ?'
+} %>

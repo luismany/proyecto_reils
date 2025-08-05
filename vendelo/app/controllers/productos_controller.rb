@@ -33,6 +33,27 @@
     @producto = Producto.find(params[:id])
   end
 
+  def actualizar
+    @producto= Producto.find(params[:id])
+
+    if @producto.update(parametros_producto)
+        redirect_to productos_path, notice: 'Producto actualizado Correctamente'
+
+    else
+      render :editar, status: :unprocessable_entity
+
+    end
+  end
+
+  def eliminar
+    @producto= Producto.find(params[:id])
+    @producto.destroy
+
+    redirect_to productos_path, notice: 'Producto Eliminado correctamente', status: :see_other
+    # el status: :see_other se utiliza para redireccionar a otro producto y no al producto eliminado .
+
+  end
+
 
   private
   # esta funcion devuelve los parametros de producto

@@ -5,12 +5,13 @@ Rails.application.routes.draw do
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   get "up" => "rails/health#show", as: :rails_health_check
   
-
+  delete '/productos/:id', to: 'productos#eliminar'
+  patch '/productos/:id', to: 'productos#actualizar'
   post '/productos', to: 'productos#crear'
   get '/productos/nuevo', to: 'productos#nuevo', as: :nuevo_producto
   get '/productos', to: 'productos#index'
   get '/productos/:id', to: 'productos#show', as: :producto
-    get '/productos/:id/editar', to: 'productos#editar', as: :editar_producto
+  get '/productos/:id/editar', to: 'productos#editar', as: :editar_producto
   
 
   # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)

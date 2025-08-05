@@ -65,5 +65,36 @@ class ProoductosControllerTest < ActionDispatch::IntegrationTest
 
   end
 
+  test 'Permite actualizar un producto' do
+    patch producto_path(productos(:ps4)), params:{
+      producto:{
+        precio:170
+      }
+    }
+    assert_redirected_to productos_path
+    assert_equal flash[:notice], 'Producto actualizado Correctamente'
+  end
+
+  test 'No permite actualizar un producto con un campo invalido' do
+
+    patch producto_path(productos(:ps4)), params:{
+      producto:{
+        precio:nil
+      }
+    }
+    assert_response :unprocessable_entity
+  end
+
+  test 'Permite eliminar productos' do
+
+    assert_difference('Producto.count', -1) do
+    delete producto_path(productos(:ps4))
+    end
+
+    assert_redirected_to productos_path
+    assert_equal flash[:notice], 'Producto Eliminado correctamente'
+
+  end
+
 end
 
