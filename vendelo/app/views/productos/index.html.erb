@@ -5,6 +5,10 @@
 <%= link_to producto_path(producto), class:'producto' do %> <%# para crear un link %>
 
   <h2><%= producto.titulo%></h2>  
+  <% if producto.imagen.attached? %> <%# Verifica si hay una imagen adjunta%>
+ <% # Muestra la imagen del producto con un ancho de 300px%>
+  <%= image_tag producto.imagen, class: 'imagen-producto', width:300 %>
+<% end %>
 
 <%end%>
 

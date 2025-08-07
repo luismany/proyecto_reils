@@ -3,8 +3,16 @@
  <p class= 'descripcion'><%= @producto.descripcion%></p>
 <span class= 'precio'><%= @producto.precio%></span> $
 
+
+<% if @producto.imagen.attached? %> <%# Verifica si hay una imagen adjunta%>
+ <% # Muestra la imagen del producto con un ancho de 300px%>
+  <%= image_tag @producto.imagen, class: 'imagen-producto', width:300 %>
+<% end %>
+<div >
+
+</div>
 <%# link que redirige a editar producto%>
-<%= link_to 'Editar Producto', editar_producto_path(@producto) %>
+<%= link_to 'Editar Producto', edit_producto_path(@producto) %>
 
 <%= link_to 'Eliminar Producto', producto_path(@producto), data:{
     turbo_method: :delete,

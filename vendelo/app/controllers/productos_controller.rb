@@ -10,11 +10,11 @@
    @producto= Producto.find(params[:id]) # muestra un producto por id
   end
 
-  def nuevo
+  def new
     @producto= Producto.new # crea una instancia del objeto Producto
   end
 
-  def crear 
+  def create 
     @producto= Producto.new(parametros_producto) # se pasa los parametros que estan en la funcion parametros_producto
 
    # pp @producto # muestra por pantalla el contenido de una variable
@@ -24,28 +24,28 @@
       redirect_to productos_path , notice: 'Producto creado correctamente.'
 
    else
-     render :nuevo, status: :unprocessable_entity # renderiza nuevo y envia un error 422
+     render :new, status: :unprocessable_entity # renderiza nuevo y envia un error 422
    end
 
   end
   
-  def editar
+  def edit
     @producto = Producto.find(params[:id])
   end
 
-  def actualizar
+  def update
     @producto= Producto.find(params[:id])
 
     if @producto.update(parametros_producto)
         redirect_to productos_path, notice: 'Producto actualizado Correctamente'
 
     else
-      render :editar, status: :unprocessable_entity
+      render :edit, status: :unprocessable_entity
 
     end
   end
 
-  def eliminar
+  def destroy
     @producto= Producto.find(params[:id])
     @producto.destroy
 
@@ -58,7 +58,7 @@
   private
   # esta funcion devuelve los parametros de producto
   def parametros_producto
-    params.require(:producto).permit(:titulo, :descripcion, :precio) 
+    params.require(:producto).permit(:titulo, :descripcion, :precio, :imagen) 
   end
 
  end

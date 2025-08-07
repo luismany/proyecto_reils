@@ -7,9 +7,9 @@ class ProoductosControllerTest < ActionDispatch::IntegrationTest
     get productos_path 
     assert_response :success    # esperamos que la respuesta sea satisfactoria
     assert_select '.producto',2   # esperamos 2 productos que contengan la clase .producto
-  end                             
+  end   
 
-  test 'renderiza la pagina detalle de producto' do
+    test 'renderiza la pagina detalle de producto' do
 
     get producto_path(productos(:ps4))
     assert_response :success
@@ -21,7 +21,7 @@ class ProoductosControllerTest < ActionDispatch::IntegrationTest
 
   test 'renderiza la pagina de nuevo con su formulario' do
 
-    get nuevo_producto_path
+    get new_producto_path
     assert_response :success
     assert_select 'form'
 
@@ -59,7 +59,7 @@ class ProoductosControllerTest < ActionDispatch::IntegrationTest
 
    test 'renderiza la pagina de editar con su formulario' do
 
-    get editar_producto_path(productos(:ps4))
+    get edit_producto_path(productos(:ps4))
     assert_response :success
     assert_select 'form'
 
@@ -95,6 +95,8 @@ class ProoductosControllerTest < ActionDispatch::IntegrationTest
     assert_equal flash[:notice], 'Producto Eliminado correctamente'
 
   end
+
+
 
 end
 
