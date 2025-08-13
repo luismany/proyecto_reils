@@ -1,0 +1,12 @@
+
+<h2>Categorias</h2>
+
+<% @categorias.each do |categoria|%> <%# bucle each %>
+
+    <p><%= categoria.nombre%></p>  
+    <%= link_to 'Editar', edit_categoria_path(categoria) %> |
+    <%= link_to 'Eliminar', categoria_path(categoria),  data: {
+        turbo_method: :delete,
+        turbo_confirm: '¿Estas seguro?' 
+        } %>
+<%end%>

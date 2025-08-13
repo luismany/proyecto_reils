@@ -1,0 +1,20 @@
+
+<%= form_with model: @categoria do |form| %>
+
+<% @categoria.errors.full_messages.each do |error| %>
+   <div>
+        <%= error %> 
+   </div>
+
+<% end %>
+
+<div>
+<%= form.label :Nombre %>   
+<%= form.text_field :nombre %>
+</div>
+
+<div>
+<%= form.submit "Guardar" %> 
+</div>
+
+<% end %>

@@ -2,12 +2,15 @@
  class ProductosController < ApplicationController
 
   def index
-  
-    @productos= Producto.all # muestra todos los productos
+    # muestra todos los productos
+    @productos= Producto.all.with_attached_imagen
+
+    # with_attached_imagen se utiliza para que Active Storage cargue las imágenes asociadas a los productos.
+    # Esto es útil cuando se desea mostrar una lista de productos con sus imágenes en una vista.
   end
 
   def show
-   @producto= Producto.find(params[:id]) # muestra un producto por id
+   producto
   end
 
   def new
@@ -30,13 +33,12 @@
   end
   
   def edit
-    @producto = Producto.find(params[:id])
+    producto
   end
 
   def update
-    @producto= Producto.find(params[:id])
 
-    if @producto.update(parametros_producto)
+    if producto.update(parametros_producto)
         redirect_to productos_path, notice: 'Producto actualizado Correctamente'
 
     else
@@ -46,8 +48,8 @@
   end
 
   def destroy
-    @producto= Producto.find(params[:id])
-    @producto.destroy
+    
+    producto.destroy
 
     redirect_to productos_path, notice: 'Producto Eliminado correctamente', status: :see_other
     # el status: :see_other se utiliza para redireccionar a otro producto y no al producto eliminado .
@@ -59,6 +61,10 @@
   # esta funcion devuelve los parametros de producto
   def parametros_producto
     params.require(:producto).permit(:titulo, :descripcion, :precio, :imagen) 
+  end
+
+  def producto
+    @producto = Producto.find(params[:id]) # muestra un producto por id
   end
 
  end
