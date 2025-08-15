@@ -3,7 +3,7 @@
 
   def index
     # muestra todos los productos
-    @productos= Producto.all.with_attached_imagen
+    @productos= Producto.all.with_attached_imagen.order(created_at: :desc)
 
     # with_attached_imagen se utiliza para que Active Storage cargue las imágenes asociadas a los productos.
     # Esto es útil cuando se desea mostrar una lista de productos con sus imágenes en una vista.
@@ -60,7 +60,7 @@
   private
   # esta funcion devuelve los parametros de producto
   def parametros_producto
-    params.require(:producto).permit(:titulo, :descripcion, :precio, :imagen) 
+    params.require(:producto).permit(:titulo, :descripcion, :precio, :imagen, :categoria_id) 
   end
 
   def producto

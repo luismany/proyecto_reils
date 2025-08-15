@@ -7,4 +7,5 @@ class Producto < ApplicationRecord
   validates :descripcion, presence: true
   validates :precio, presence: true
 
+  belongs_to :categoria # asociación con la tabla categorias
 end

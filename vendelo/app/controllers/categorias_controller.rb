@@ -1,7 +1,7 @@
 class CategoriasController < ApplicationController
   
   def index
-    @categorias = Categoria.all
+    @categorias = Categoria.all.order(nombre: :asc) # ordena las categorias por nombre
   end
 
   def new 

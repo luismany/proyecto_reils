@@ -55,6 +55,7 @@ class CategoriasControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'Permite eliminar una categoria' do
+    
     assert_difference('Categoria.count', -1) do
       delete categoria_path(categorias(:informatica))
     end

@@ -5,3 +5,6 @@ informatica:
 
 electronica:
   nombre: electronica
+
+videojuegos:
+    nombre: videojuegos

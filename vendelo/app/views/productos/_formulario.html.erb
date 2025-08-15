@@ -25,6 +25,12 @@
 <%= form.text_field :precio %>
 </div>
 
+
+<div>
+  <%= form.label :Categoria %>
+  <%= form.collection_select :categoria_id, Categoria.all.order(nombre: :asc) , :id, :nombre %>
+</div>
+
 <div>
     <%= form.label :imagen %>
     <%= form.file_field :imagen %>

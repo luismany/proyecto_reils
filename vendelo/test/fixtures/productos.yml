@@ -4,8 +4,10 @@ ps4:
   titulo: ps4 fat
   descripcion: ps3 en buen estado
   precio: 150
+  categoria: videojuegos
 
 switch:
   titulo: nintendo switch
   descripcion: le falla el lector de tarjeta sd
   precio: 195
+  categoria: videojuegos
