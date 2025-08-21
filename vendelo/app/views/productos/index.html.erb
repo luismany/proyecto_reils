@@ -1,15 +1,19 @@
-<h2>Productos</h2>  
 
-<% @productos.each do |producto|%> <%# bucle each %>
 
-<%= link_to producto_path(producto), class:'producto' do %> <%# para crear un link %>
+<%= turbo_frame_tag 'categorias' do %>
+<h2>Productos</h2> 
 
-  <h2><%= producto.titulo%></h2>  
-  <% if producto.imagen.attached? %> <%# Verifica si hay una imagen adjunta%>
- <% # Muestra la imagen del producto con un ancho de 300px%>
-  <%= image_tag producto.imagen, class: 'imagen-producto', width:300 %>
+<%= form_with url: productos_path, method: :get do |form| %>
+    <%= form.number_field :precio_min, placeholder: 'precio minimo',
+    onchange: 'this.form.requestSubmit()', value: params[:precio_min] %>
+
+    <%= form.number_field :precio_max, placeholder: 'precio maximo',
+    onchange: 'this.form.requestSubmit()', value: params[:precio_max] %>
 <% end %>
 
-<%end%>
+<%= link_to 'Todo', productos_path %> |
+<%= render partial: 'categoria', collection: @categorias %>
 
-<%end%>
+<%= render partial: 'producto', collection: @productos  %> 
+ 
+ <% end %>

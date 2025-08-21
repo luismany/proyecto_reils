@@ -7,7 +7,26 @@ class ProoductosControllerTest < ActionDispatch::IntegrationTest
     get productos_path 
     assert_response :success    # esperamos que la respuesta sea satisfactoria
     assert_select '.producto',2   # esperamos 2 productos que contengan la clase .producto
+    assert_select '.categoria',3 # esperamos 3 categorias que contengan la clase .categoria
   end   
+
+  test 'renderisa una lista de productos filtrados por categoria' do
+
+    get productos_path(categoria_id: categorias(:videojuegos).id ) # filtramos por la categoria informatica
+
+    assert_response :success    # esperamos que la respuesta sea satisfactoria
+    assert_select '.producto',2   # esperamos 2 productos que contengan la clase .producto
+
+  end  
+
+   test 'renderisa una lista de productos filtrados por precio minimo y precio maximo' do
+
+    get productos_path(precio_min: 160, precio_max: 200 ) 
+
+    assert_response :success    # esperamos que la respuesta sea satisfactoria
+    assert_select '.producto',1   
+
+  end  
 
     test 'renderiza la pagina detalle de producto' do
 

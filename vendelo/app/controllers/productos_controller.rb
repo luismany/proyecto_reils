@@ -2,11 +2,29 @@
  class ProductosController < ApplicationController
 
   def index
-    # muestra todos los productos
-    @productos= Producto.all.with_attached_imagen.order(created_at: :desc)
+    @categorias= Categoria.all.order(nombre: :asc).load_async # muestra todas las categorias ordenadas alfabeticamente 
+    #load_async se utiliza para cargar los registros de forma asincrona y mejorar el rendimiento de la aplicacion
 
+    # muestra todos los productos
+    @productos= Producto.all.with_attached_imagen.order(created_at: :desc).load_async
     # with_attached_imagen se utiliza para que Active Storage cargue las imágenes asociadas a los productos.
     # Esto es útil cuando se desea mostrar una lista de productos con sus imágenes en una vista.
+
+    if params[:categoria_id]
+      @productos= @productos.where(categoria_id: params[:categoria_id])
+      # filtra los productos por categoria_id si se pasa como parametro
+    end
+
+    if params[:precio_min].present? 
+      @productos= @productos.where("precio >= ?", params[:precio_min])
+      # filtra los productos por precio minimo si se pasa como parametro
+    end
+
+    if params[:precio_max].present?
+      @productos= @productos.where("precio <= ?", params[:precio_max])
+      # filtra los productos por precio maximo si se pasa como parametro
+    end
+
   end
 
   def show
