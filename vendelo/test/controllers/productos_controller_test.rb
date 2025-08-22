@@ -28,6 +28,15 @@ class ProoductosControllerTest < ActionDispatch::IntegrationTest
 
   end  
 
+     test 'Busca un producto filtrados por query_text' do
+
+    get productos_path(query_text: 'ps4' ) 
+
+    assert_response :success    # esperamos que la respuesta sea satisfactoria
+    assert_select '.producto',1   
+
+  end  
+
     test 'renderiza la pagina detalle de producto' do
 
     get producto_path(productos(:ps4))

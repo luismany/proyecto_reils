@@ -4,11 +4,16 @@
 <h2>Productos</h2> 
 
 <%= form_with url: productos_path, method: :get do |form| %>
+
+    <%= form.text_field :query_text, placeholder: '¿que quieres buscar?',
+    onchange: 'this.form.requestSubmit()',value: params[:query_text] %>
+
     <%= form.number_field :precio_min, placeholder: 'precio minimo',
     onchange: 'this.form.requestSubmit()', value: params[:precio_min] %>
 
     <%= form.number_field :precio_max, placeholder: 'precio maximo',
     onchange: 'this.form.requestSubmit()', value: params[:precio_max] %>
+
 <% end %>
 
 <%= link_to 'Todo', productos_path %> |

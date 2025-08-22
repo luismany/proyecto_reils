@@ -25,6 +25,11 @@
       # filtra los productos por precio maximo si se pasa como parametro
     end
 
+    if params[:query_text].present?
+      @productos= @productos.search_full_text(params[:query_text])
+      # filtra los productos por consulta si se pasa como parametro
+    end
+
   end
 
   def show
