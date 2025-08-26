@@ -6,7 +6,7 @@
     #load_async se utiliza para cargar los registros de forma asincrona y mejorar el rendimiento de la aplicacion
 
     # muestra todos los productos
-    @productos= Producto.all.with_attached_imagen.order(created_at: :desc).load_async
+    @productos= Producto.all.with_attached_imagen
     # with_attached_imagen se utiliza para que Active Storage cargue las imágenes asociadas a los productos.
     # Esto es útil cuando se desea mostrar una lista de productos con sus imágenes en una vista.
 
@@ -29,6 +29,11 @@
       @productos= @productos.search_full_text(params[:query_text])
       # filtra los productos por consulta si se pasa como parametro
     end
+
+   order_by= Producto::ORDER_BY.fetch(params[:order_by]&.to_sym, Producto::ORDER_BY[:recientes])
+    # ordena los productos por recientes, caros o baratos si se pasa como parametro
+    @productos= @productos.order(order_by).load_async
+    # carga los productos de forma asincrona
 
   end
 

@@ -37,6 +37,27 @@ class ProoductosControllerTest < ActionDispatch::IntegrationTest
 
   end  
 
+   test 'Clasifica los producto por mas caros' do
+
+    get productos_path(order_by: 'caros' ) 
+
+    assert_response :success    # esperamos que la respuesta sea satisfactoria
+    assert_select '.producto',2 
+    assert_select '.productos .producto:first-child h2', 'nintendo switch' 
+
+   end  
+
+   test 'Clasifica los producto por mas barato' do
+
+    get productos_path(order_by: 'baratos' ) 
+
+    assert_response :success    # esperamos que la respuesta sea satisfactoria
+    assert_select '.producto',2 
+    assert_select '.productos .producto:first-child h2', 'ps4 fat' 
+
+   end  
+
+
     test 'renderiza la pagina detalle de producto' do
 
     get producto_path(productos(:ps4))
