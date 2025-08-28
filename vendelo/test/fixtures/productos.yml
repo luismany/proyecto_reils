@@ -1,13 +1,157 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 ps4:
-  titulo: ps4 fat
-  descripcion: ps3 en buen estado
+  titulo: PS4 Fat
+  descripcion: PS4 en buen estado
   precio: 150
-  categoria: videojuegos
+  categoria: videogames
 
 switch:
-  titulo: nintendo switch
-  descripcion: le falla el lector de tarjeta sd
+  titulo: Nintendo Switch
+  descripcion: Le falla el lector de tarjeta SD
   precio: 195
-  categoria: videojuegos
+  categoria: videogames
+
+nintendo64:
+  titulo: Nintendo 64 en buen estado
+  descripcion: Con su caja, solo tiene algún pequeño arañazo
+  precio: 190
+  categoria: videogames
+
+megadrive:
+  titulo: Sega Megadrive
+  descripcion: Funciona perfectamente, solo consola
+  precio: 90
+  categoria: videogames
+
+driver2:
+  titulo: Driver 2 para ps1
+  descripcion: Como nuevo en su caja y con instrucciones
+  precio: 25
+  categoria: videogames
+
+ps5:
+  titulo: PS5 nueva sin lector
+  descripcion: A estrenar, usada solo dos veces.
+  precio: 650
+  categoria: videogames
+
+gameboy:
+  titulo: Game Boy Color
+  descripcion: Con su caja. Color morada transparente.
+  precio: 150
+  categoria: videogames
+
+air:
+  titulo: Macbook Air
+  descripcion: Le falla la batería
+  precio: 250
+  categoria: computers
+
+imac:
+  titulo: iMac 27" 2015
+  descripcion: i5 con 8gb de ram y SSD
+  precio: 90
+  categoria: computers
+
+ryzen:
+  titulo: Ryzen 5950x
+  descripcion: Sin estrenar precintado como nuevo
+  precio: 590
+  categoria: computers
+
+nvidia:
+  titulo: Nvidia 3090ti
+  descripcion: Solo usada 3 meses la vendo porque no la uso
+  precio: 1500
+  categoria: computers
+
+ram:
+  titulo: 16GB Ram DDR4 3200mhz
+  descripcion: Funciona perfectamente
+  precio: 95
+  categoria: computers
+
+renault:
+  titulo: Renault Clio 2009
+  descripcion: 85000km, 95cv
+  precio: 4500
+  categoria: cars
+
+seat:
+  titulo: Seat Panda clásico
+  descripcion: Tan solo 90000km, 75cv. Del año 1980
+  precio: 5500
+  categoria: cars
+
+michael:
+  titulo: Vinilo Michael Jackson Thriller
+  descripcion: Como nuevo a estrenar
+  precio: 45
+  categoria: music
+
+queen:
+  titulo: Vinilo Queen
+  descripcion: Ligeras marcas de uso de los años 80
+  precio: 35
+  categoria: music
+
+tv:
+  titulo: Televisión LG 48 pulgadas
+  descripcion: Viene con smart TV funciona perfectamente
+  precio: 350
+  categoria: electronic
+
+kindle:
+  titulo: Lector de libros Kindle 2010
+  descripcion: Tiene marcas de uso pero funciona bien
+  precio: 35
+  categoria: electronic
+
+ipod:
+  titulo: iPod touch
+  descripcion: Como nuevo a estrenar con su caja
+  precio: 175
+  categoria: electronic
+
+harry:
+  titulo: Colección entera de Harry Potter
+  descripcion: Todos los libros de la saga. Bien cuidados!
+  precio: 65
+  categoria: books
+
+hobbit:
+  titulo: El hobbit
+  descripcion: Libro en buen estado
+  precio: 15
+  categoria: books
+
+iphone:
+  titulo: iPhone 13
+  descripcion: Funciona correctamente.
+  precio: 400
+  categoria: mobile
+
+pixel:
+  titulo: Google Pixel 4
+  descripcion: Le falla la batería
+  precio: 100
+  categoria: mobile
+
+surf:
+  titulo: Tabla de surf
+  descripcion: Usada dos veces. Como nueva.
+  precio: 125
+  categoria: sports
+
+tennis:
+  titulo: Raqueta de tenis profesional
+  descripcion: Fabricada en fibra de carbono. Solo un par de arañazos
+  precio: 135
+  categoria: sports
+
+skate:
+  titulo: Skateboard
+  descripcion: Como nuevo con las ruedas recién cambiadas
+  precio: 75
+  categoria: sports

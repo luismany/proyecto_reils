@@ -6,16 +6,16 @@ class ProoductosControllerTest < ActionDispatch::IntegrationTest
 
     get productos_path 
     assert_response :success    # esperamos que la respuesta sea satisfactoria
-    assert_select '.producto',2   # esperamos 2 productos que contengan la clase .producto
-    assert_select '.categoria',3 # esperamos 3 categorias que contengan la clase .categoria
+    assert_select '.producto',26   # esperamos 2 productos que contengan la clase .producto
+    assert_select '.categoria',10 # esperamos 3 categorias que contengan la clase .categoria
   end   
 
   test 'renderisa una lista de productos filtrados por categoria' do
 
-    get productos_path(categoria_id: categorias(:videojuegos).id ) # filtramos por la categoria informatica
+    get productos_path(categoria_id: categorias(:videogames).id ) # filtramos por la categoria informatica
 
     assert_response :success    # esperamos que la respuesta sea satisfactoria
-    assert_select '.producto',2   # esperamos 2 productos que contengan la clase .producto
+    assert_select '.producto',7   # esperamos 2 productos que contengan la clase .producto
 
   end  
 
@@ -24,7 +24,7 @@ class ProoductosControllerTest < ActionDispatch::IntegrationTest
     get productos_path(precio_min: 160, precio_max: 200 ) 
 
     assert_response :success    # esperamos que la respuesta sea satisfactoria
-    assert_select '.producto',1   
+    assert_select '.producto',3   
 
   end  
 
@@ -42,8 +42,8 @@ class ProoductosControllerTest < ActionDispatch::IntegrationTest
     get productos_path(order_by: 'caros' ) 
 
     assert_response :success    # esperamos que la respuesta sea satisfactoria
-    assert_select '.producto',2 
-    assert_select '.productos .producto:first-child h2', 'nintendo switch' 
+    assert_select '.producto',26 
+    assert_select '.productos .producto:first-child h2', 'Seat Panda clásico' 
 
    end  
 
@@ -52,8 +52,8 @@ class ProoductosControllerTest < ActionDispatch::IntegrationTest
     get productos_path(order_by: 'baratos' ) 
 
     assert_response :success    # esperamos que la respuesta sea satisfactoria
-    assert_select '.producto',2 
-    assert_select '.productos .producto:first-child h2', 'ps4 fat' 
+    assert_select '.producto',26 
+    assert_select '.productos .producto:first-child h2', 'El hobbit' 
 
    end  
 
@@ -62,8 +62,8 @@ class ProoductosControllerTest < ActionDispatch::IntegrationTest
 
     get producto_path(productos(:ps4))
     assert_response :success
-    assert_select '.titulo', 'ps4 fat'
-    assert_select '.descripcion', 'ps3 en buen estado'
+    assert_select '.titulo', 'PS4 Fat'
+    assert_select '.descripcion', 'PS4 en buen estado'
     assert_select '.precio', '150'
 
   end
@@ -81,10 +81,10 @@ class ProoductosControllerTest < ActionDispatch::IntegrationTest
     # espera un objeto producto con todos sus atributos
     post productos_path, params: {
       producto:{
-        titulo:'nintendo 64',
-        descripcion:'le faltan los cables',
-        precio:45,
-        categoria_id: categorias(:videojuegos).id # asigna la categoria al producto
+        titulo:'PS4 Fat',
+        descripcion:'PS4 en buen estado',
+        precio:150,
+        categoria_id: categorias(:videogames).id # asigna la categoria al producto
       }
     }
 

@@ -33,13 +33,13 @@ class CategoriasControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'renderiza la pagina de editar con su formulario' do
-    get edit_categoria_path(categorias(:informatica))
+    get edit_categoria_path(categorias(:computers))
     assert_response :success
     assert_select 'form'
   end
 
   test 'Permite actualizar una categoria' do
-    patch categoria_path(categorias(:informatica)), params: {
+    patch categoria_path(categorias(:computers)), params: {
       categoria:{
         nombre:'informaticas' }}
 
@@ -48,7 +48,7 @@ class CategoriasControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'No permite actualizar una categoria con un campo invalido' do
-    patch categoria_path(categorias(:informatica)), params: {
+    patch categoria_path(categorias(:computers)), params: {
       categoria:{
         nombre:'' }}  
         assert_response :unprocessable_entity
@@ -57,7 +57,7 @@ class CategoriasControllerTest < ActionDispatch::IntegrationTest
   test 'Permite eliminar una categoria' do
     
     assert_difference('Categoria.count', -1) do
-      delete categoria_path(categorias(:informatica))
+      delete categoria_path(categorias(:otros))
     end
 
     assert_redirected_to categorias_path
