@@ -35,6 +35,9 @@
     @productos= @productos.order(order_by).load_async
     # carga los productos de forma asincrona
 
+
+     @pagy, @productos = pagy_countless(@productos, items: 12)
+
   end
 
   def show

@@ -1,6 +1,6 @@
 
 
-<%= turbo_frame_tag 'categorias' do %>
+<%= turbo_frame_tag 'home' do %>
 <h2>Productos</h2> 
 
 <%= form_with url: productos_path, method: :get do |form| %>
@@ -17,14 +17,16 @@
     <%= form.select :order_by, options_for_select([["Recientes","recientes"],
     ["Mas Caros", "caros"],["Mas Baratos","baratos"]], params[:order_by]), {},
     { onChange: 'this.form.requestSubmit()' } %>
-
+  
 <% end %>
 
 <%= link_to 'Todo', productos_path %> |
 <%= render partial: 'categoria', collection: @categorias %>
 
-<div class="productos">
-<%= render partial: 'producto', collection: @productos  %> 
-</div >
+<%= turbo_frame_tag "productos-#{@pagy.page}", class: "productos" do %>  
+  <%= render partial: 'producto', collection: @productos  %> 
+  <%= turbo_frame_tag "productos-#{@pagy.next}", class: 'productos', src: pagy_url_for(@pagy, @pagy.next), loading: :lazy if @pagy.next %>
+  <% end %>
 
- <% end %>
+<% end %>
+
