@@ -5,38 +5,37 @@
     @categorias= Categoria.all.order(nombre: :asc).load_async # muestra todas las categorias ordenadas alfabeticamente 
     #load_async se utiliza para cargar los registros de forma asincrona y mejorar el rendimiento de la aplicacion
 
-    # muestra todos los productos
-    @productos= Producto.all.with_attached_imagen
-    # with_attached_imagen se utiliza para que Active Storage cargue las imágenes asociadas a los productos.
-    # Esto es útil cuando se desea mostrar una lista de productos con sus imágenes en una vista.
+  #   # muestra todos los productos
+  #   @productos= Producto.all.with_attached_imagen
+  #   # with_attached_imagen se utiliza para que Active Storage cargue las imágenes asociadas a los productos.
+  #   # Esto es útil cuando se desea mostrar una lista de productos con sus imágenes en una vista.
 
-    if params[:categoria_id]
-      @productos= @productos.where(categoria_id: params[:categoria_id])
-      # filtra los productos por categoria_id si se pasa como parametro
-    end
+  #   if params[:categoria_id]
+  #     @productos= @productos.where(categoria_id: params[:categoria_id])
+  #     # filtra los productos por categoria_id si se pasa como parametro
+  #   end
 
-    if params[:precio_min].present? 
-      @productos= @productos.where("precio >= ?", params[:precio_min])
-      # filtra los productos por precio minimo si se pasa como parametro
-    end
+  #   if params[:precio_min].present? 
+  #     @productos= @productos.where("precio >= ?", params[:precio_min])
+  #     # filtra los productos por precio minimo si se pasa como parametro
+  #   end
 
-    if params[:precio_max].present?
-      @productos= @productos.where("precio <= ?", params[:precio_max])
-      # filtra los productos por precio maximo si se pasa como parametro
-    end
+  #   if params[:precio_max].present?
+  #     @productos= @productos.where("precio <= ?", params[:precio_max])
+  #     # filtra los productos por precio maximo si se pasa como parametro
+  #   end
 
-    if params[:query_text].present?
-      @productos= @productos.search_full_text(params[:query_text])
-      # filtra los productos por consulta si se pasa como parametro
-    end
+  #   if params[:query_text].present?
+  #     @productos= @productos.search_full_text(params[:query_text])
+  #     # filtra los productos por consulta si se pasa como parametro
+  #   end
 
-   order_by= Producto::ORDER_BY.fetch(params[:order_by]&.to_sym, Producto::ORDER_BY[:recientes])
-    # ordena los productos por recientes, caros o baratos si se pasa como parametro
-    @productos= @productos.order(order_by).load_async
-    # carga los productos de forma asincrona
+  #  order_by= Producto::ORDER_BY.fetch(params[:order_by]&.to_sym, Producto::ORDER_BY[:recientes])
+  #   # ordena los productos por recientes, caros o baratos si se pasa como parametro
+  #   @productos= @productos.order(order_by).load_async
+  #   # carga los productos de forma asincrona
 
-
-     @pagy, @productos = pagy_countless(@productos, items: 12)
+     @pagy, @productos = pagy_countless(FindProductos.new.call(params).load_async , items: 12)
 
   end
 

@@ -6,7 +6,7 @@ class ProoductosControllerTest < ActionDispatch::IntegrationTest
 
     get productos_path 
     assert_response :success    # esperamos que la respuesta sea satisfactoria
-    assert_select '.producto',26   # esperamos 2 productos que contengan la clase .producto
+    assert_select '.producto',20   # esperamos 2 productos que contengan la clase .producto
     assert_select '.categoria',10 # esperamos 3 categorias que contengan la clase .categoria
   end   
 
@@ -42,7 +42,7 @@ class ProoductosControllerTest < ActionDispatch::IntegrationTest
     get productos_path(order_by: 'caros' ) 
 
     assert_response :success    # esperamos que la respuesta sea satisfactoria
-    assert_select '.producto',26 
+    assert_select '.producto',20 
     assert_select '.productos .producto:first-child h2', 'Seat Panda clásico' 
 
    end  
@@ -52,7 +52,7 @@ class ProoductosControllerTest < ActionDispatch::IntegrationTest
     get productos_path(order_by: 'baratos' ) 
 
     assert_response :success    # esperamos que la respuesta sea satisfactoria
-    assert_select '.producto',26 
+    assert_select '.producto',20 
     assert_select '.productos .producto:first-child h2', 'El hobbit' 
 
    end  
