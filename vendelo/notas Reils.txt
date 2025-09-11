@@ -1,0 +1,71 @@
+para crear una app rails 
+
+comando rails new + Nombre del proyecto + -d postgresql
+luego cd + el nombre del proyecto para entar a la carpeta
+luego rails db:create // para crear la base de datos
+luego rails s // para levantar el server
+
+para crear modelos
+
+rails generate model + nombre del modelo + atributos ej: titulo:string descripcion:text precio:integer
+luego con rails db:migrate para guardar los cambios en la base de datos
+
+Active record.
+
+se activa con el comando rails console
+
+nombre de la tabla.create( atributos: valor) ejemplo
+Producto.create(titulo:'Samsung A54 Semi nuevo', descripcion:'todo ok , celular en perfecto estado, sin caja', precio: 5000 ) crea un insert
+
+ Producto.all  muestra todos los registros que hay en la tabla producto
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+rails test para probar los test
+
+en rails console 
+se pueden crear instancias de modelos vacios con nombre del modelo + new
+ejemplo : Producto.new . a continuacion crea una instancia del objeto producto vacia.
+
+
+rails generate migration agregarNullFalseCamposProductos : Permitio crear una migracion
+para configurar los valores null de la tabla productos en el metodo change
+
+luego en la consola rails db:migrate para guardar los cambios en la base de datos
+
+Cada vez que crees una nueva migración, puedes correr este pequeño combo para mantener ambas bases de datos al día:
+rails db:migrate
+rails db:migrate RAILS_ENV=test
+
+Nombre del modelo.last = muestra el ultimo registro de la base de datos ejemplo
+Producto.last
+
+Y Producto.last.destroy = elimina el ultimo registro de la base de datos.
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Ative Storage // para agregar subir archvos a la pagina
+
+rails active_storage:install
+rails db:migrate
+
+rails db:rollback es una herramienta súper útil cuando estás trabajando con migraciones en Rails y necesitas deshacer la última migración que ejecutaste.
+
+rails generate migration AddCategoryToProduct categoria:references // agregamos una migracion para agregar 
+el campo categoriaId a Productos
+
+rails db:reset resetea las bases de datos de prueba y de produccion y las vuelve a crear vacias.
+
+pára instalar pg_search se hace con bundle add pg_seach para que añada la gema a todas las gemas que hay en nuestro proyecto.
+pg_search permite hacer busquedas .
+
+rails db:fixtures:load   => limpia la base de datos y luego llena las tablas con los datos de las fixtures
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+bundle add pagy para instalar pagy 
+
+bundle update para actualizar todas las gemas
+
+rails g migration AddNotNullToCategoryName     para crear una migracion cuando realice un cambio en el modelo como en este ejemplo
+que no permita nulos en tabla categorias campo nombre.
+luego rails db:migrate para que realize los cambios en la db
+
+

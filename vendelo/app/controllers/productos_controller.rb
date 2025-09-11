@@ -35,7 +35,7 @@
   #   @productos= @productos.order(order_by).load_async
   #   # carga los productos de forma asincrona
 
-     @pagy, @productos = pagy_countless(FindProductos.new.call(params).load_async , items: 12)
+     @pagy, @productos = pagy_countless(FindProductos.new.call(producto_params_index).load_async , items: 12)
 
   end
 
@@ -91,6 +91,10 @@
   # esta funcion devuelve los parametros de producto
   def parametros_producto
     params.require(:producto).permit(:titulo, :descripcion, :precio, :imagen, :categoria_id) 
+  end
+  # esta funcion devuelve los parametros de producto para el index
+  def producto_params_index
+    params.permit(:categoria_id, :precio_min, :precio_max, :query_text, :order_by) 
   end
 
   def producto
