@@ -16,6 +16,10 @@ Rails.application.routes.draw do
   resources :productos, path: '/'
   resources :categorias, except: :show
 
+  namespace :authentication, path: '', as: '' do
+    resources :users, only: [:new, :create]
+  end
+
 
 
   # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)

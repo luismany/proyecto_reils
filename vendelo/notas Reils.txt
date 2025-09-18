@@ -68,4 +68,7 @@ rails g migration AddNotNullToCategoryName     para crear una migracion cuando r
 que no permita nulos en tabla categorias campo nombre.
 luego rails db:migrate para que realize los cambios en la db
 
+Creacion de modelo User
+rails generate model User email:string:uniq username:sting:uniq password_digest:string
+
 
