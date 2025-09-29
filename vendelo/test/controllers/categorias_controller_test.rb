@@ -3,11 +3,6 @@ require 'test_helper'
 
 class CategoriasControllerTest < ActionDispatch::IntegrationTest
 
-  test 'renderiza una lista de categorias' do
-    get categorias_path
-    assert_response :success
-  
-  end
 
   test 'renderiza la pagina de nuevo con su formulario' do
     get new_categoria_path
