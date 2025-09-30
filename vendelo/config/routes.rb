@@ -13,13 +13,15 @@ Rails.application.routes.draw do
   #get '/productos', to: 'productos#index'
   #get '/productos/:id', to: 'productos#show', as: :producto
   #get '/productos/:id/edit', to: 'productos#editar', as: :edit_producto
-  resources :productos, path: '/'
+  resources :productos
   resources :categorias, except: :show
 
   namespace :authentication, path: '', as: '' do
     resources :users, only: [:new, :create]
+    resources :sessions, only: [:new, :create]
   end
 
+  root "productos#index"
 
 
   # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
