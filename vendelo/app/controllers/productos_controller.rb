@@ -1,6 +1,8 @@
  
  class ProductosController < ApplicationController
 
+  skip_before_action :paginas_protegidas, only: [:index, :show]
+
   def index
     @categorias= Categoria.all.order(nombre: :asc).load_async # muestra todas las categorias ordenadas alfabeticamente 
     #load_async se utiliza para cargar los registros de forma asincrona y mejorar el rendimiento de la aplicacion

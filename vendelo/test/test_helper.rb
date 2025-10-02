@@ -11,5 +11,11 @@ module ActiveSupport
     fixtures :all
 
     # Add more helper methods to be used by all tests here...
+
+    # metodo para iniciar sesion en los tests
+    def login 
+      post sessions_path, params: { login: 'luis@vendelo.com', password: '123456' }
+    end
+
   end
 end

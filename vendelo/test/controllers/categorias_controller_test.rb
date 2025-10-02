@@ -3,6 +3,9 @@ require 'test_helper'
 
 class CategoriasControllerTest < ActionDispatch::IntegrationTest
 
+  def setup
+    login # llama al metodo login para iniciar sesion
+  end
 
   test 'renderiza la pagina de nuevo con su formulario' do
     get new_categoria_path

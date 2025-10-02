@@ -2,6 +2,10 @@ require 'test_helper'
 
 class ProoductosControllerTest < ActionDispatch::IntegrationTest
 
+  def setup
+    login # llama al metodo login para iniciar sesion
+  end
+
   test 'renderisa una lista de productos' do
 
     get productos_path 
