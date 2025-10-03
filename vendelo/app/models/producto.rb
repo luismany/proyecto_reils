@@ -25,4 +25,10 @@ class Producto < ApplicationRecord
   validates :precio, presence: true
 
   belongs_to :categoria # asociación con la tabla categorias
+  belongs_to :user, default: -> { Current.user }
+  # asociación con la tabla users, el producto pertenece a un usuario
+  # default: -> { Current.user } asigna el usuario actual al producto si no se especifica otro usuario
+
+  validates :user, presence: true # valida que el producto tenga un usuario asociado
+
 end

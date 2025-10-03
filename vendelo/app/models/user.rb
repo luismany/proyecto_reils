@@ -14,6 +14,8 @@ class User < ApplicationRecord
     message: 'solo puede contener letras, numeros y guiones bajos' } #el nombre de usuario solo puede contener letras, numeros y guiones bajos
   validates :password, presence: true, length: { minimum: 6 }  
 
+  has_many :productos, dependent: :destroy # un usuario puede tener muchos productos, si se elimina el usuario se eliminan sus productos
+
   # convierte a minusculas el email y el username antes de guardarlo en la base de datos
   before_save :downcase_fields
 

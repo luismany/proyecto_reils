@@ -71,4 +71,14 @@ luego rails db:migrate para que realize los cambios en la db
 Creacion de modelo User
 rails generate model User email:string:uniq username:sting:uniq password_digest:string
 
+rails g migration assUserToProducto user:references =  agregamos una migracion para agregar 
+el campo userId a Productos.
+Nota:hacemos las referencias en los modelos relacionados ej: en el modelo Producto
+ belongs_to :user # asociación con la tabla users. y en el modelo user
+has_many :productos, dependent: :destroy # un usuario puede tener muchos productos, si se elimina el usuario se eliminan sus productos
+
+luego se ejecuta la migracion con rails db:migrate
+
+para cargar las fuxtures : rails db:fixtures:load
+
 
