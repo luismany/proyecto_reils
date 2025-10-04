@@ -11,10 +11,10 @@
 <div >
 
 </div>
-<%# link que redirige a editar producto%>
-<%= link_to 'Editar Producto', edit_producto_path(@producto) %>
+<%# link que redirige a editar producto %>
+<%= link_to 'Editar Producto', edit_producto_path(@producto) if @producto.user == Current.user %>
 
 <%= link_to 'Eliminar Producto', producto_path(@producto), data:{
     turbo_method: :delete,
     turbo_confirm: '¿ Estas Seguro ?'
-} %>
+} if @producto.user == Current.user %>

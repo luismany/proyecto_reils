@@ -96,7 +96,7 @@
   end
   # esta funcion devuelve los parametros de producto para el index
   def producto_params_index
-    params.permit(:categoria_id, :precio_min, :precio_max, :query_text, :order_by) 
+    params.permit(:categoria_id, :precio_min, :precio_max, :query_text, :order_by, :page) 
   end
 
   def producto

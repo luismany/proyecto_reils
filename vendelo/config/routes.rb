@@ -4,8 +4,14 @@ Rails.application.routes.draw do
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.
   #get "up" => "rails/health#show", as: :rails_health_check
- 
 
+  namespace :authentication, path: '', as: '' do
+    resources :users, only: [:new, :create], path: 'registro', path_names: { new: '/' } 
+    resources :sessions, only: [:new, :create, :destroy], path: 'login', path_names: { new: '/' } 
+  end
+
+  resources :categorias, except: :show
+  
   #delete '/productos/:id', to: 'productos#eliminar'
   #patch '/productos/:id', to: 'productos#actualizar'
   #post '/productos', to: 'productos#crear'
@@ -13,16 +19,9 @@ Rails.application.routes.draw do
   #get '/productos', to: 'productos#index'
   #get '/productos/:id', to: 'productos#show', as: :producto
   #get '/productos/:id/edit', to: 'productos#editar', as: :edit_producto
-  resources :productos
-  resources :categorias, except: :show
-
-  namespace :authentication, path: '', as: '' do
-    resources :users, only: [:new, :create]
-    resources :sessions, only: [:new, :create]
-  end
-
-  root "productos#index"
-
+  resources :productos, path: '/' 
+  
+  #root "productos#index"
 
   # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
   # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest

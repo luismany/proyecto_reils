@@ -4,6 +4,12 @@
 <%end%>
 
 <% #crea un hipervinculo a /productos/nuevo %>
-<%= link_to 'Añadir Producto', new_producto_path %> |
+<%= link_to 'Añadir Producto', new_producto_path if Current.user %> 
+<%= link_to 'Categoria', categorias_path if Current.user %> 
+<%= link_to 'Iniciar Sesion', new_session_path unless Current.user %> |
+<%= link_to 'Registro', new_user_path unless Current.user %> 
 
-<%= link_to 'Categoria', categorias_path %>
+<%= link_to 'Cerrar Sesion', session_path(Current.user.id), data:{
+    turbo_method: :delete,
+    turbo_confirm: '¿Estas seguro que quieres cerrar sesion?'
+} if Current.user %>

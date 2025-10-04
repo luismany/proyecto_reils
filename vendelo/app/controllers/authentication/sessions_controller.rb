@@ -24,5 +24,11 @@ class Authentication::SessionsController < ApplicationController
      
   end
 
+  def destroy
+    # session.delete(:user_id) elimina el id del usuario de la sesion para cerrar la sesion.
+    session.delete(:user_id)
+    redirect_to productos_path, notice: 'Has cerrado Sesion, vuelve pronto.'
+  end
+
 
 end

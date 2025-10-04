@@ -25,4 +25,11 @@ class Authentication::SessionsControllerTest < ActionDispatch::IntegrationTest
 
   end
 
+  test 'permite cerrar sesion' do
+    login
+    delete session_url(@user.id)
+    assert_redirected_to productos_path
+    assert_equal flash[:notice],'Has cerrado Sesion, vuelve pronto.'
+  end
+
 end
